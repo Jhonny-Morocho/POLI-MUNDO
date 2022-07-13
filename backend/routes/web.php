@@ -1,8 +1,8 @@
 <?php
-use App\Http\Controller\GeneroController;
 use Illuminate\Support\Facades\Route;
 //Para que funcione la API
-//use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/genero/crear',[GeneroController::class,'create']);
+

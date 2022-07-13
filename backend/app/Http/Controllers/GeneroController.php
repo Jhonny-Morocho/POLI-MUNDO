@@ -14,7 +14,12 @@ class GeneroController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data=Genero::get();
+            return response()->json(["message"=>'success',"data"=>$data,"status"=> 200]);
+        } catch (\Throwable $th) {
+            return response()->json(["message"=>$th->getMessage(),"data"=>null,"status"=>404]);
+        }
     }
 
     /**
@@ -24,9 +29,8 @@ class GeneroController extends Controller
      */
     public function create()
     {
-        //$data="hola mundo";
-         //return response()->json($data, 200);
-         return 'hola mundo';
+
+
     }
 
     /**
@@ -37,7 +41,12 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $genero=generos()->create([
+            'nombre'=>$request['nombre'],
+            'origen_nacimiento'=>$request['origen_nacimiento'],
+            'descripcion'=>$request['descripcion']
+        ]);
+        return response('Creado el genero '.$genero->id);
     }
 
     /**

@@ -14,7 +14,12 @@ class CancionController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data=Cancion::get();
+            return response()->json(["message"=>'success',"data"=>$data,"status"=> 200]);
+        } catch (\Throwable $th) {
+            return response()->json(["message"=>$th->getMessage(),"data"=>null,"status"=>404]);
+        }
     }
 
     /**
@@ -35,7 +40,7 @@ class CancionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

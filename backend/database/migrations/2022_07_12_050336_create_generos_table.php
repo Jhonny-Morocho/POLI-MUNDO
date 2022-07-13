@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('origen_nacimiento');
-            $table->string('descripcion');
+            $table->string('origen_nacimiento')->nullable();
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }
