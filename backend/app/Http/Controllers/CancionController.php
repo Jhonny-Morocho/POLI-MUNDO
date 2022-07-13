@@ -15,7 +15,7 @@ class CancionController extends Controller
     public function index()
     {
         try {
-            $data=Cancion::get();
+            $data=Cancion::join('generos','generos.id','cancions.genero_id')->get();
             return response()->json(["message"=>'success',"data"=>$data,"status"=> 200]);
         } catch (\Throwable $th) {
             return response()->json(["message"=>$th->getMessage(),"data"=>null,"status"=>404]);
@@ -49,9 +49,15 @@ class CancionController extends Controller
      * @param  \App\Models\Cancion  $cancion
      * @return \Illuminate\Http\Response
      */
-    public function show(Cancion $cancion)
+    public function show($id)
     {
-        //
+        
+        try {
+            $data=Cancion::join('generos','generos.id','cancions.genero_id')->where('cancions.id',$id)->first();
+            return response()->json(["message"=>'success',"data"=>$data,"status"=> 200]);
+        } catch (\Throwable $th) {
+            return response()->json(["message"=>$th->getMessage(),"data"=>null,"status"=>404]);
+        }
     }
 
     /**

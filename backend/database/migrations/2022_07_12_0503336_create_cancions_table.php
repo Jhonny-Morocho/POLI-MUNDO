@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('artista');
             $table->double('bpm');
-            $table->foreignId('genero_id');
+            $table->foreignId('genero_id')->constrained('generos');
             $table->timestamps();
         });
     }

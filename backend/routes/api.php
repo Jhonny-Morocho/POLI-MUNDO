@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/genero',[GeneroController::class,'index']);
 Route::get('/cancion',[CancionController::class,'index']);
+
+Route::get('/cancion/{id}',[CancionController::class,'show']);
+Route::get('/genero/{id}',[GeneroController::class,'show']);
